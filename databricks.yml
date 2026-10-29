@@ -1,0 +1,26 @@
+
+bundle:
+  name: usdeadb-ecomm
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    default: azdeusdbricks_dev
+
+targets:
+  dev:
+    default: true
+    mode: development
+    workspace:
+      host: https://adb-7405611226262528.8.azuredatabricks.net
+    variables:
+      catalog: azdeusdbricks_dev
+
+  prod:
+    mode: production
+    workspace:
+      host: https://adb-7405611226262528.8.azuredatabricks.net
+    variables:
+      catalog: azdeusdbricks_prod
