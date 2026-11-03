@@ -15,7 +15,7 @@ resources:
         - task_key: bronze_ingestion
           job_cluster_key: ecommerce_cluster
           notebook_task:
-            notebook_path: ./src/bronze/ingest_orders.py
+            notebook_path: ./src/bronze/ingest_orders.ipynb
             base_parameters:
               catalog: ${var.catalog}
 
