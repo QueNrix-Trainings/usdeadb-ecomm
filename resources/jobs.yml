@@ -15,27 +15,27 @@ resources:
         - task_key: bronze_ingestion
           job_cluster_key: ecommerce_cluster
           notebook_task:
-            notebook_path: ./src/bronze/ingest_orders.ipynb
+            notebook_path: ../src/bronze/ingest_orders.ipynb
             base_parameters:
               catalog: ${var.catalog}
 
-        - task_key: silver_transformation
-          depends_on:
-            - task_key: bronze_ingestion
-          job_cluster_key: ecommerce_cluster
-          notebook_task:
-            notebook_path: ./src/silver/clean_orders.py
-            base_parameters:
-              catalog: ${var.catalog}
+        # - task_key: silver_transformation
+        #   depends_on:
+        #     - task_key: bronze_ingestion
+        #   job_cluster_key: ecommerce_cluster
+        #   notebook_task:
+        #     notebook_path: ../src/silver/clean_orders.py
+        #     base_parameters:
+        #       catalog: ${var.catalog}
 
-        - task_key: gold_aggregation
-          depends_on:
-            - task_key: silver_transformation
-          job_cluster_key: ecommerce_cluster
-          notebook_task:
-            notebook_path: ./src/gold/sales_summary.py
-            base_parameters:
-              catalog: ${var.catalog}
+        # - task_key: gold_aggregation
+        #   depends_on:
+        #     - task_key: silver_transformation
+        #   job_cluster_key: ecommerce_cluster
+        #   notebook_task:
+        #     notebook_path: ../src/gold/sales_summary.py
+        #     base_parameters:
+        #       catalog: ${var.catalog}
 
       schedule:
         quartz_cron_expression: "0 0 2 * * ?"
